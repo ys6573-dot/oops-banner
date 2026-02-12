@@ -1,6 +1,12 @@
 public class OOPSBannerApp {
     public static void main(String[] args) {
-        // This is Use Case 1: Printing OOPS to the console
-        System.out.println("OOPS");
+        // UC2: Displaying "OOPS" in a 7-line grid using asterisks and spaces
+        System.out.println(" **** **** **** **** ");
+        System.out.println("* * * * * * * ");
+        System.out.println("* * * * * * * ");
+        System.out.println("* * * * **** **** ");
+        System.out.println("* * * * * *");
+        System.out.println("* * * * * *");
+        System.out.println(" **** **** * **** ");
     }
 }
