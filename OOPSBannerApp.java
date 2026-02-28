@@ -1,13 +1,19 @@
 public class OOPSBannerApp {
     public static void main(String[] args) {
-        // UC3: Refactored using String.join() for better memory efficiency
-        
-        System.out.println(String.join(" ", "****", "****", "****", "****"));
-        System.out.println(String.join(" ", "* *", "* *", "* *", "* "));
-        System.out.println(String.join(" ", "* *", "* *", "* *", "* "));
-        System.out.println(String.join(" ", "* *", "* *", "* *", "****"));
-        System.out.println(String.join(" ", "* *", "* *", "* *", "   *"));
-        System.out.println(String.join(" ", "* *", "* *", "* *", "   *"));
-        System.out.println(String.join(" ", "****", "****", "****", "****"));
+        // UC5: Combined declaration and initialization in a single statement
+        String[] banner = {
+            String.join("   ", "****", "****", "****", "****"),
+            String.join("   ", "* *", "* *", "* *", "* "),
+            String.join("   ", "* *", "* *", "* *", "* "),
+            String.join("   ", "* *", "* *", "****", "****"),
+            String.join("   ", "* *", "* *", "* ", "   *"),
+            String.join("   ", "* *", "* *", "* ", "   *"),
+            String.join("   ", "****", "****", "* ", "****")
+        };
+
+        // UC5: Enhanced for-loop for efficient rendering
+        for (String row : banner) {
+            System.out.println(row);
+        }
     }
 }
