@@ -1,38 +1,36 @@
 public class OOPSBannerApp {
     public static void main(String[] args) {
-        // UC6: Invoking static helper methods during array declaration
-        String[] banner = {
-            getLine(0), getLine(1), getLine(2), getLine(3), getLine(4), getLine(5), getLine(6)
-        };
-
-        // UC6: Loop-based rendering
-        for (String row : banner) {
-            System.out.println(row);
+        // UC7: Using the Inner Class to retrieve and display the banner
+        CharacterPatternMap map = new CharacterPatternMap();
+        
+        // Use StringBuilder for efficient horizontal banner construction
+        StringBuilder banner = new StringBuilder();
+        for (int i = 0; i < 7; i++) {
+            banner.append(map.getPattern('O', i)).append("   ")
+                  .append(map.getPattern('O', i)).append("   ")
+                  .append(map.getPattern('P', i)).append("   ")
+                  .append(map.getPattern('S', i)).append("\n");
         }
+        System.out.print(banner.toString());
     }
 
-    // Static helper method to build patterns for each row (0-6)
-    public static String getLine(int row) {
-        String o = getO(row);
-        String p = getP(row);
-        String s = getS(row);
-        return String.join("   ", o, o, p, s);
-    }
-
-    public static String getO(int row) {
-        if (row == 0 || row == 6) return "****";
-        return "* *";
-    }
-
-    public static String getP(int row) {
-        if (row == 0 || row == 3) return "****";
-        if (row < 3) return "* *";
-        return "* ";
-    }
-
-    public static String getS(int row) {
-        if (row == 0 || row == 3 || row == 6) return "****";
-        if (row < 3) return "* ";
-        return "   *";
+    /**
+     * UC7: Static Inner Class for centralized pattern management.
+     * Adheres to the Single Responsibility Principle and Abstraction.
+     */
+    static class CharacterPatternMap {
+        // Method to retrieve the pattern for a specific character and row
+        public String getPattern(char character, int row) {
+            switch (character) {
+                case 'O': return (row == 0 || row == 6) ? "****" : "* *";
+                case 'P':
+                    if (row == 0 || row == 3) return "****";
+                    return (row < 3) ? "* *" : "* ";
+                case 'S':
+                    if (row == 0 || row == 3 || row == 6) return "****";
+                    return (row < 3) ? "* " : "   *";
+                default: return "    ";
+            }
+        }
     }
 }
